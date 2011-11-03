@@ -1,3 +1,9 @@
+# revision 17374
+# category Package
+# catalog-ctan /macros/latex/contrib/listbib
+# catalog-date 2010-03-06 21:34:04 +0100
+# catalog-license gpl
+# catalog-version 2.2
 Name:		texlive-listbib
 Version:	2.2
 Release:	1
@@ -50,6 +56,7 @@ styles.
 %doc %{_texmfdistdir}/source/latex/listbib/listbib.drv
 %doc %{_texmfdistdir}/source/latex/listbib/listbib.dtx
 %doc %{_texmfdistdir}/source/latex/listbib/listbib.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -60,3 +67,5 @@ styles.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}

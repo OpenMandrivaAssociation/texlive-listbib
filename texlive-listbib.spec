@@ -1,12 +1,12 @@
-# revision 17374
+# revision 26126
 # category Package
 # catalog-ctan /macros/latex/contrib/listbib
-# catalog-date 2010-03-06 21:34:04 +0100
+# catalog-date 2012-04-21 20:14:11 +0200
 # catalog-license gpl
 # catalog-version 2.2
 Name:		texlive-listbib
 Version:	2.2
-Release:	2
+Release:	3
 Summary:	Lists contents of BibTeX files
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/listbib
@@ -18,6 +18,7 @@ BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
+Provides:	texlive-listbib.bin = %{EVRD}
 
 %description
 Generates listings of bibliographic data bases in BibTeX format
@@ -35,12 +36,13 @@ styles.
 
 #-----------------------------------------------------------------------
 %files
+%{_bindir}/listbib
+%{_texmfdistdir}/bibtex/bst/listbib/listbib.bst
+%{_texmfdistdir}/scripts/listbib/listbib
 %{_texmfdistdir}/tex/latex/listbib/listbib.cfg
 %{_texmfdistdir}/tex/latex/listbib/listbib.sty
-%doc %{_texmfdistdir}/doc/latex/listbib/listbib
+%{_texmfdistdir}/tex/latex/listbib/listbib.tex
 %doc %{_texmfdistdir}/doc/latex/listbib/listbib-doc.pdf
-%doc %{_texmfdistdir}/doc/latex/listbib/listbib.doc
-%doc %{_texmfdistdir}/doc/latex/listbib/listbib.tex
 #- source
 %doc %{_texmfdistdir}/source/latex/listbib/listbib-doc.drv
 %doc %{_texmfdistdir}/source/latex/listbib/listbib.drv
@@ -54,5 +56,9 @@ styles.
 %build
 
 %install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_bindir}
+pushd %{buildroot}%{_bindir}
+    ln -sf %{_texmfdistdir}/scripts/listbib/listbib listbib
+popd
+mkdir -p %{buildroot}%{_datadir}
+cp -fpar texmf-dist %{buildroot}%{_datadir}

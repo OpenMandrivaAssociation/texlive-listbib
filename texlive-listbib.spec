@@ -1,4 +1,4 @@
-# revision 26126
+# revision 29349
 # category Package
 # catalog-ctan /macros/latex/contrib/listbib
 # catalog-date 2012-04-21 20:14:11 +0200
@@ -6,7 +6,7 @@
 # catalog-version 2.2
 Name:		texlive-listbib
 Version:	2.2
-Release:	3
+Release:	4
 Summary:	Lists contents of BibTeX files
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/listbib
@@ -62,21 +62,3 @@ pushd %{buildroot}%{_bindir}
 popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
-
-
-%changelog
-* Mon Jun 11 2012 Paulo Andrade <pcpa@mandriva.com.br> 2.2-3
-+ Revision: 804923
-- Update to latest release.
-
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 2.2-2
-+ Revision: 753318
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 2.2-1
-+ Revision: 718865
-- texlive-listbib
-- texlive-listbib
-- texlive-listbib
-- texlive-listbib
-

@@ -1,19 +1,13 @@
-# revision 29349
-# category Package
-# catalog-ctan /macros/latex/contrib/listbib
-# catalog-date 2012-04-21 20:14:11 +0200
-# catalog-license gpl
-# catalog-version 2.2
 Name:		texlive-listbib
-Version:	2.2
-Release:	13
+Version:	29349
+Release:	1
 Summary:	Lists contents of BibTeX files
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/listbib
 License:	GPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -27,12 +21,12 @@ which is better suited for this purpose than the standard
 styles.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -51,14 +45,15 @@ styles.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-    ln -sf %{_texmfdistdir}/scripts/listbib/listbib listbib
+ln -sf %{_texmfdistdir}/scripts/listbib/listbib listbib
 popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}

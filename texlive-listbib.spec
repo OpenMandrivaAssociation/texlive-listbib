@@ -1,6 +1,6 @@
 Name:		texlive-listbib
 Version:	29349
-Release:	1
+Release:	2
 Summary:	Lists contents of BibTeX files
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/listbib

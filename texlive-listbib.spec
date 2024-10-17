@@ -3,7 +3,7 @@ Version:	29349
 Release:	2
 Summary:	Lists contents of BibTeX files
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/listbib
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/listbib
 License:	GPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.doc.r%{version}.tar.xz

@@ -1,59 +1,24 @@
-Name:		texlive-listbib
-Version:	29349
-Release:	2
+%global tl_name listbib
+%global tl_revision 29349
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	2.2
+Release:	%{tl_revision}.1
 Summary:	Lists contents of BibTeX files
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/listbib
-License:	GPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.source.r%{version}.tar.xz
+License:	gpl
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/listbib.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
-Provides:	texlive-listbib.bin = %{EVRD}
+BuildSystem:	texlive
+Requires:	texlive(listbib.bin)
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-Generates listings of bibliographic data bases in BibTeX format
--- for example for archival purposes. Included is a listbib.bst
-which is better suited for this purpose than the standard
-styles.
+Generates listings of bibliographic data bases in BibTeX format -- for
+example for archival purposes. Included is a listbib.bst which is better
+suited for this purpose than the standard styles.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_bindir}/listbib
-%{_texmfdistdir}/bibtex/bst/listbib/listbib.bst
-%{_texmfdistdir}/scripts/listbib/listbib
-%{_texmfdistdir}/tex/latex/listbib/listbib.cfg
-%{_texmfdistdir}/tex/latex/listbib/listbib.sty
-%{_texmfdistdir}/tex/latex/listbib/listbib.tex
-%doc %{_texmfdistdir}/doc/latex/listbib/listbib-doc.pdf
-#- source
-%doc %{_texmfdistdir}/source/latex/listbib/listbib-doc.drv
-%doc %{_texmfdistdir}/source/latex/listbib/listbib.drv
-%doc %{_texmfdistdir}/source/latex/listbib/listbib.dtx
-%doc %{_texmfdistdir}/source/latex/listbib/listbib.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_bindir}
-pushd %{buildroot}%{_bindir}
-ln -sf %{_texmfdistdir}/scripts/listbib/listbib listbib
-popd
-mkdir -p %{buildroot}%{_datadir}
-cp -fpar texmf-dist %{buildroot}%{_datadir}
